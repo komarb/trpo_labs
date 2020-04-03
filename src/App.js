@@ -5,20 +5,10 @@ import Select from "react-select";
 class MyTimezonePicker extends React.Component {
     constructor(props) {
         super(props);
-        /*this.timezoneOptions = timezones.map((timezone,index) =>
-            <option value={timezone.offset} key={index}>
-                {timezone.text}
-            </option>
-        );*/
         this.state = {selectedOption: timezones[0]};
         this.handleChange = this.handleChange.bind(this);
     }
 
-    /*handleChange(event) {
-        this.setState({selectedOption: event.target.value}, () => {
-            this.props.offsetHandler(this.state.offset);
-        });
-    }*/
     handleChange = selectedOption => {
         this.setState(
             { selectedOption },
