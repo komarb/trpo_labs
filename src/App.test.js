@@ -3,9 +3,10 @@ import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
 import MyTimeZonePicker from './App'
 import App from './App'
+const { DateTime } = require("luxon");
 
 test('rendering time in Moscow', () => {
-    let d = new Date().toLocaleTimeString();
+    let d = DateTime.local().setZone(`Europe/Moscow`).toFormat("HH:mm:ss").toString();
     const { getByText } = render(<App/>);
     expect(getByText("It is " + d +" in Moscow.")).toBeInTheDocument();
 });

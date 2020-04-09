@@ -49,7 +49,7 @@ class Clock extends React.Component {
     }
 
     tick() {
-        let MD = DateTime.local().setZone(`Europe/Moscow`).toFormat("HH:mm:ss").toString()
+        let MD = DateTime.local().setZone(`Europe/Moscow`).toFormat("HH:mm:ss").toString();
         let OD = DateTime.local().setZone(`${this.props.zone}`).toFormat("HH:mm:ss").toString();
 
         this.setState({date: MD});
