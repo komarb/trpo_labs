@@ -41,7 +41,7 @@ export const timezones = [
     "abbr": "AKDT",
     "offset": -8,
     "isdst": true,
-    "label": "(UTC-09:00) Alaska",
+    "label": "(UTC-08:00) Alaska",
     "utc": [
       "America/Anchorage",
       "America/Juneau",
@@ -255,9 +255,9 @@ export const timezones = [
   {
     "value": "Venezuela Standard Time",
     "abbr": "VST",
-    "offset": -4.5,
+    "offset": -4,
     "isdst": false,
-    "label": "(UTC-04:30) Caracas",
+    "label": "(UTC-04:00) Caracas",
     "utc": [
       "America/Caracas"
     ]
@@ -450,14 +450,6 @@ export const timezones = [
       "Atlantic/South_Georgia",
       "Etc/GMT+2"
     ]
-  },
-  {
-    "value": "Mid-Atlantic Standard Time",
-    "abbr": "MDT",
-    "offset": -1,
-    "isdst": true,
-    "label": "(UTC-02:00) Mid-Atlantic - Old",
-    "utc": []
   },
   {
     "value": "Azores Standard Time",
@@ -828,7 +820,7 @@ export const timezones = [
   {
     "value": "Kaliningrad Standard Time",
     "abbr": "KST",
-    "offset": 3,
+    "offset": 2,
     "isdst": false,
     "label": "(UTC+02:00) Kaliningrad",
     "utc": [
@@ -1374,16 +1366,6 @@ export const timezones = [
       "Asia/Kamchatka",
       "Asia/Magadan",
       "Asia/Srednekolymsk"
-    ]
-  },
-  {
-    "value": "Kamchatka Standard Time",
-    "abbr": "KDT",
-    "offset": 13,
-    "isdst": true,
-    "label": "(UTC+12:00) Petropavlovsk-Kamchatsky - Old",
-    "utc": [
-      "Asia/Kamchatka"
     ]
   },
   {

@@ -1,6 +1,7 @@
 import React from "react";
 import {timezones} from "./timezones";
 import Select from "react-select";
+const { DateTime } = require("luxon");
 
 class MyTimezonePicker extends React.Component {
     constructor(props) {
@@ -12,7 +13,7 @@ class MyTimezonePicker extends React.Component {
     handleChange = selectedOption => {
         this.setState(
             { selectedOption },
-            () => this.props.offsetHandler(this.state.selectedOption.offset)
+            () => this.props.zoneHandler(this.state.selectedOption.utc[0])
         );
     };
     render() {
@@ -31,8 +32,8 @@ class Clock extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            date: new Date(),
-            offsetDate: new Date(),
+            date: DateTime.local().setZone(`Europe/Moscow`).toFormat("HH:mm:ss").toString(),
+            offsetDate: DateTime.local().setZone(`${this.props.zone}`).toFormat("HH:mm:ss").toString(),
         };
     }
 
@@ -48,17 +49,18 @@ class Clock extends React.Component {
     }
 
     tick() {
-        let OD = new Date();
-        OD.setHours(OD.getUTCHours()  + parseInt(this.props.offset));
-        this.setState({date: new Date()});
+        let MD = DateTime.local().setZone(`Europe/Moscow`).toFormat("HH:mm:ss").toString();
+        let OD = DateTime.local().setZone(`${this.props.zone}`).toFormat("HH:mm:ss").toString();
+
+        this.setState({date: MD});
         this.setState( {offsetDate: OD});
     }
 
     render() {
         return (
             <div>
-                <h2>It is {this.state.date.toLocaleTimeString()} in Moscow.</h2>
-                <h2>It is {this.state.offsetDate.toLocaleTimeString()} in</h2>
+                <h2>It is {this.state.date} in Moscow.</h2>
+                <h2>It is {this.state.offsetDate} in</h2>
             </div>
         );
     }
@@ -67,16 +69,19 @@ class Clock extends React.Component {
 export default class App extends React.Component {
     constructor (props) {
         super(props);
-        this.state = {offset: 0};
+        this.state = {zone: "Etc/GMT+12"};
     }
 
     render() {
         return (
             <div className="App">
-                <Clock offset={this.state.offset}/>
-                <MyTimezonePicker offsetHandler={off => {
-                    this.setState({offset: off})
-                }}/>
+                <Clock zone={this.state.zone}/>
+                <div className="timezonePicker">
+                    <MyTimezonePicker zoneHandler={off => {
+                        this.setState({zone: off})
+                    }}/>
+                </div>
+
             </div>
         )
     }
