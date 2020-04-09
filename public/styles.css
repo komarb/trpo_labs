@@ -19,7 +19,9 @@ body {
     max-width: 42em;
 }
 
-
+.timezonePicker {
+    color: hsl(0,0%,20%);
+}
 /*
  * Header
  */
