@@ -3,14 +3,11 @@ version: "3.7"
 
 services:
   timezone:
-    # service 1 container name
     container_name: timezone
     build:
       context: .
       dockerfile: Dockerfile
     ports:
       - "80:80"
-    # the mounted volumes (folders which are outside docker but being used by docker)
     volumes:
       - ".:/app"
-      - "/app/node_modules"
